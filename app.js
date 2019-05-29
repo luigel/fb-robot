@@ -81,7 +81,6 @@ app.get('/webhook', function(req, res) {
  *
  */
 app.post('/webhook', function (req, res) {
-
   var data = req.body;
   // Make sure this is a page subscription
   if (data.object == 'page') {
@@ -299,22 +298,24 @@ function handleReceivedMessage(event) {
         break        
 
       case 'add menu':
-        addPersistentMenu();
+        if(senderID == 2090930081005354)
+          addPersistentMenu();
         break        
 
       case 'remove menu':
-        removePersistentMenu();
+        if(senderID == 2090930081005354)
+          removePersistentMenu();
         break        
 
       case 'stop':  // Stop the Bot from responding if the admin sends this messages
-         if(senderID ==  1073962542672604) {
+         if(senderID ==  2090930081005354) {
             console.log("Stoppping bot");
             isStopped = true;
          }
          break
 
       case 'start': // start up again
-         if(senderID ==  1073962542672604)  {
+         if(senderID ==  2090930081005354)  {
             console.log("Starting bot");
             isStopped = false;
          }
